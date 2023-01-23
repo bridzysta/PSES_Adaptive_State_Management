@@ -30,6 +30,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
         run: |
-          echo Start of las
+          echo Start of ls
           ls ${{ github.workspace }}
           echo End of ls
