@@ -1,12 +1,11 @@
-set(LIBRARY_NAME StateManagementLib)
-
-set(Headers
-    debug.hpp
-)
+set(SM_LIBRARY StateManagementLib)
 
 set(Sources
-    debug.cpp
+    StateManagement.cpp
 )
 
-add_library(${LIBRARY_NAME} SHARED ${Sources} ${Headers})
-target_include_directories(${LIBRARY_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+# Make an automatic library - will be static or dynamic based on user setting
+add_library(${SM_LIBRARY} ${Sources})
+
+# We need this directory, and users of our library will need it too
+target_include_directories(${SM_LIBRARY} PUBLIC ${PROJECT_SOURCE_DIR}/include)

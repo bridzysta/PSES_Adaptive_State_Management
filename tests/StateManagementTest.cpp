@@ -1,4 +1,4 @@
-#include "sm_test_main.hpp"
+#include "StateManagementTest.hpp"
 
 
 StateManagementTest::StateManagementTest() {
@@ -13,6 +13,7 @@ StateManagementTest::~StateManagementTest() {
 // and cleaning up each test, you can define the following methods:
 
 void StateManagementTest::SetUp() {
+    mySM.do_sth();
     // Code here will be called immediately after the constructor (right
     // before each test).
 }

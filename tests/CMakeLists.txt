@@ -1,16 +1,15 @@
+include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
-set(test_name UT_StateManagement)
-set(GTEST_LIBRARIES gtest gtest_main gmock gmock_main)
+set(TESTS_NAME UT_StateManagement)
+set(GTEST_LIBRARIES gtest gmock)
 
-set(Sources
-    sm_test_main.cpp
-    sm_test_main.hpp
-    test_of_debug.cpp
-    test_of_debug2.cpp
+set(TestSources
+    StateManagementTest.cpp
+    StateManagementTest.hpp
+    ExampleTestOfNothing.cpp
 )
 
-add_executable(${test_name} ${Sources})
-target_link_libraries(${test_name} ${GTEST_LIBRARIES})
-target_link_libraries(${test_name} ${LIBRARY_NAME})
-add_test(NAME ${test_name} COMMAND ${test_name})
+add_executable(${TESTS_NAME} ${TestSources})
+target_link_libraries(${TESTS_NAME} ${LIBRARY_NAME} ${GTEST_LIBRARIES})
+add_test(NAME ${TESTS_NAME} COMMAND ${TESTS_NAME})
