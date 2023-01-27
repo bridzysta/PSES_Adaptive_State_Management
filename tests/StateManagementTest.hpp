@@ -2,11 +2,11 @@
 #define STATE_MANAGEMENT_TEST_HPP
 
 #include "gtest/gtest.h"
-#include "StateManagement/StateManagement.hpp"
+#include "StateManagement.hpp"
 
 
 // The fixture for testing class StateManagement.
-class StateManagementTest : public ::testing::Test {
+class StateManagementTest : public testing::Test {
     protected:
     ara::sm::StateManagement mySM;
 
@@ -17,8 +17,5 @@ class StateManagementTest : public ::testing::Test {
     void TearDown() override;
 
 };
-
-
-int main(int argc, char **argv);
 
 #endif

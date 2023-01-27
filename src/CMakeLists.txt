@@ -1,11 +1,12 @@
-set(SM_LIBRARY StateManagementLib)
 
 set(Sources
     StateManagement.cpp
+    StateManagement.hpp
 )
 
-# Make an automatic library - will be static or dynamic based on user setting
-add_library(${SM_LIBRARY} ${Sources})
+add_library(StateManagementLib ${Sources})
 
-# We need this directory, and users of our library will need it too
-target_include_directories(${SM_LIBRARY} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_include_directories(StateManagementLib
+    PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}
+)

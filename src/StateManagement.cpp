@@ -1,12 +1,10 @@
-#include "StateManagement/StateManagement.hpp"
-namespace ara {
-    namespace sm {
-        StateManagement::StateManagement() {
-            // SM Constructor
-        }
+#include "StateManagement.hpp"
+#include "iostream"
 
-        void StateManagement::do_sth() {
+namespace ara::sm {
 
-        }
+    StateManagement::StateManagement() {
+
     }
+
 }
