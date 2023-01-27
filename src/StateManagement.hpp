@@ -20,15 +20,23 @@ namespace ara::sm {
     };
 
     /**
-     * @brief Diagnostic Reset Service Interface
+     * @brief PowerMode Service Interface
+     * @details Fills [SWS_SM_91020]
+     */
+    class PowerMode {
+        public:
+        void message(PowerModeMsg msg);
+        void event(PowerModeRespMsg* respMsg);
+    };
+
+    /**
+     * @brief DiagnosticReset Service Interface
      * @details Fills [SWS_SM_91015]
-     *
      */
     class DiagnosticReset {
         public:
         void message(DiagnosticResetMsg msg);
         void event(DiagnosticResetRespMsg* respMsg);
-
     };
 
 }
