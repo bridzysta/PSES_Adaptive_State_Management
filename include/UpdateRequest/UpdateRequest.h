@@ -8,7 +8,7 @@
 
   @brief UpdateRequest class initialization
   
-  SWS Reqs: []
+  SWS Reqs: [SWS_SM_91016]
 
   @copyright AGH University of Science and Technology  
 \*===========================================================================*/
@@ -19,7 +19,13 @@ namespace ara
     {
         class UpdateRequest 
         {
-
+            public:
+                void PrepareRollback(void);
+                void PrepareUpdate(void);
+                void ResetMachine(void);
+                void StartUpdateSession(void);
+                void StopUpdateSession(void);
+                void VerifyUpdate(void);
         };
     }
 }
