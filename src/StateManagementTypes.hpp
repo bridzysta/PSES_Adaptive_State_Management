@@ -1,3 +1,12 @@
+/**
+ * @file StateManagementTypes.hpp
+ * @author Krzysztof Cislo (krzysztof.cislo265@gmail.com)
+ * @brief StateManagement types definitions
+ * @version 0.1
+ * @date 2023-01-28
+ *
+ * @copyright Copyright (c) 2023
+ */
 #ifndef STATE_MANAGEMENT_TYPES_HPP
 #define STATE_MANAGEMENT_TYPES_HPP
 
