@@ -8,6 +8,8 @@ add_executable(StateManagementUT
     StateManagementTest.cpp
     TestOfRecoveryAction.cpp
     TestOfEcuResetRequest.cpp
+    TriggerInTest.cpp
+    TriggerInTest.h
 )
 
 target_link_libraries(StateManagementUT
