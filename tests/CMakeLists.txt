@@ -7,6 +7,8 @@ add_executable(StateManagementUT
     StateManagementTest.hpp
     StateManagementTest.cpp
     TestOfNothing.cpp
+    TestOfRecoveryAction.cpp
+    TestOfEcuResetRequest.cpp
 )
 
 target_link_libraries(StateManagementUT

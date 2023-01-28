@@ -2,6 +2,8 @@
 set(Sources
     StateManagement.cpp
     StateManagement.hpp
+    EcuResetRequest.hpp
+    RecoveryAction.hpp
 )
 
 add_library(StateManagementLib ${Sources})
