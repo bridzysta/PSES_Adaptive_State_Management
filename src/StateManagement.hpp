@@ -26,7 +26,7 @@ namespace ara::sm {
     class PowerMode {
         public:
         void message(PowerModeMsg msg);
-        void event(PowerModeRespMsg* respMsg);
+        void event(PowerModeRespMsg &respMsg);
     };
 
     /**
@@ -36,7 +36,7 @@ namespace ara::sm {
     class DiagnosticReset {
         public:
         void message(DiagnosticResetMsg msg);
-        void event(DiagnosticResetRespMsg* respMsg);
+        void event(DiagnosticResetRespMsg &respMsg);
     };
 
 }

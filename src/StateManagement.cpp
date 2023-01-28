@@ -45,7 +45,7 @@ namespace ara::sm {
      *
      * All Processes which got a PowerMode request sends this as answer to State Management
      */
-    void PowerMode::event(PowerModeRespMsg* respMsg){
+    void PowerMode::event(PowerModeRespMsg &respMsg){
         // something like wait for event from CommunicationGroup and then do sth with respMsg
     }
 
@@ -70,7 +70,7 @@ namespace ara::sm {
      *
      * All Processes which got a DiagnosticReset request sends this as answer to State Management
      */
-    void DiagnosticReset::event(DiagnosticResetRespMsg* respMsg){
+    void DiagnosticReset::event(DiagnosticResetRespMsg &respMsg){
         // something like wait for event from CommunicationGroup and then do sth with respMsg
     }
 
