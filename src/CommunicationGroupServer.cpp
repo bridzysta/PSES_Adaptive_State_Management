@@ -1,7 +1,7 @@
 /** =========================================================================*\
   @file CommunicationGroupServer.cpp
   @date 24.01.2023
-  @authors Przemyslaw Kurzak, Krzysztof Cislo, Jakub Dzialowy
+  @authors Przemyslaw Kurzak
 
   @brief CommunicationGroupServer class definition
   
@@ -10,44 +10,44 @@
   @copyright AGH University of Science and Technology  
 \*===========================================================================*/
 
-#include "../include/CommunicationGroupServer.hpp"
+#include "CommunicationGroupServer.h"
 
 /**
- * @brief broadcast function
+ * @brief Broadcast function
  * 
  * More details
 */
-void ara::com::CommunicationGroupServer::broadcast()
+void ara::com::CommunicationGroupServer::Broadcast()
 {
 
 }
 
 /**
- * @brief listClients function
+ * @brief ListClients function
  * 
  * More details
 */
-void ara::com::CommunicationGroupServer::listClients()
+void ara::com::CommunicationGroupServer::ListClients()
 {
 
 }
 
 /**
- * @brief message function
+ * @brief Message function
  * 
  * More details
 */
-void ara::com::CommunicationGroupServer::message()
+void ara::com::CommunicationGroupServer::Message()
 {
 
 }
 
 /**
- * @brief response function
+ * @brief Response function
  * 
  * More details
 */
-void ara::com::CommunicationGroupServer::response()
+void ara::com::CommunicationGroupServer::Response()
 {
 
 }

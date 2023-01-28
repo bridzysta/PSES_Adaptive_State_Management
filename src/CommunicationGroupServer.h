@@ -2,7 +2,7 @@
 #define COMMUNICATION_GROUP_SERVER_H
 
 /** =========================================================================*\
-  @file CommunicationGroupServer.hpp
+  @file CommunicationGroupServer.h
   @date 24.01.2023
   @authors Przemyslaw Kurzak
 
@@ -20,10 +20,10 @@ namespace ara
         class CommunicationGroupServer
         {
             public:
-                void broadcast(void);
-                void listClients(void);
-                void message(void);
-                void response(void);
+                void Broadcast(void);
+                void ListClients(void);
+                void Message(void);
+                void Response(void);
         };
     }
 }
