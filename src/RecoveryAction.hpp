@@ -4,6 +4,8 @@
 namespace ara::phm {
 
     class RecoveryAction {
+        public:
+        virtual void RecoveryHandler(bool *isError) = 0;
     };
 
 }

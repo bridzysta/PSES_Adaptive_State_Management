@@ -24,6 +24,11 @@ namespace ara::sm {
 
     }
 
+    void StateManagement::RecoveryHandler(bool *isError){
+        *isError = false;
+    }
+
+
 
     /**
      * @brief sends PowerModeMsg

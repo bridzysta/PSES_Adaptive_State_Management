@@ -3,20 +3,23 @@
 
 #include "StateManagementTypes.hpp"
 #include "EcuResetRequest.hpp"
+#include "RecoveryAction.hpp"
 
 namespace ara::sm {
 
-    class StateManagement : public dia::EcuResetRequest {
+    class StateManagement : public dia::EcuResetRequest, public phm::RecoveryAction {
         public:
         StateManagement();
-        private:
 
-        // Diagnostics
+        private:
+        // DIA
         void EnableRapidShutdown();
         void ExecuteReset();
         void GetLastResetCause();
         void RequestReset();
 
+        // PHM
+        void RecoveryHandler(bool *isError);
     };
 
     /**
