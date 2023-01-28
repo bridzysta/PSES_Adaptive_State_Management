@@ -13,6 +13,15 @@
 #include "UpdateRequest.h"
 
 /**
+ * @brief UpdateRequest function
+ * 
+ * More details
+*/
+ara::com::UpdateRequest::UpdateRequest() : resetRequest{false},
+                                           resetProceed{false},
+                                           updateSession{false} {}
+
+/**
  * @brief PrepareRollback function
  * 
  * More details
@@ -27,7 +36,7 @@ void ara::com::UpdateRequest::PrepareRollback(void)
  * 
  * More details
 */
-void ara::com::UpdateRequest::PrepareUpdate(void)
+bool ara::com::UpdateRequest::PrepareUpdate(void)
 {
 
 }
@@ -37,9 +46,16 @@ void ara::com::UpdateRequest::PrepareUpdate(void)
  * 
  * More details
 */
-void ara::com::UpdateRequest::ResetMachine(void)
+bool ara::com::UpdateRequest::ResetMachine(void)
 {
+  resetRequest = true;
 
+  while(resetRequest)
+  {
+
+  }
+  
+  return resetProceed ? true : false;
 }
 
 /**
@@ -47,9 +63,9 @@ void ara::com::UpdateRequest::ResetMachine(void)
  * 
  * More details
 */
-void ara::com::UpdateRequest::StartUpdateSession(void)
+void ara::com::UpdateRequest::StartUpdateSession(bool startUpdate)
 {
-
+  updateSession = startUpdate;
 }
 
 /**
@@ -57,9 +73,17 @@ void ara::com::UpdateRequest::StartUpdateSession(void)
  * 
  * More details
 */
-void ara::com::UpdateRequest::StopUpdateSession(void)
+bool ara::com::UpdateRequest::StopUpdateSession(void)
 {
-
+  if(updateSession)
+  {
+    updateSession = false;
+    return true;
+  }
+  else
+  {
+    return false;
+  }
 }
 
 /**
@@ -70,4 +94,64 @@ void ara::com::UpdateRequest::StopUpdateSession(void)
 void ara::com::UpdateRequest::VerifyUpdate()
 {
 
+}
+
+/**
+ * @brief SetUpdateSession function
+ * 
+ * More details
+*/
+void ara::com::UpdateRequest::SetUpdateSession(bool setUpdate)
+{
+  updateSession = setUpdate;
+}
+
+/**
+ * @brief GetUpdateSession function
+ * 
+ * More details
+*/
+bool ara::com::UpdateRequest::GetUpdateSession(void) const
+{
+  return updateSession;
+}
+
+/**
+ * @brief SetUpdateSession function
+ * 
+ * More details
+*/
+void ara::com::UpdateRequest::SetResetRequest(bool setRequest)
+{
+  resetRequest = setRequest;
+}
+
+/**
+ * @brief GetResetRequest function
+ * 
+ * More details
+*/
+bool ara::com::UpdateRequest::GetResetRequest(void) const
+{
+  return resetRequest;
+}
+
+/**
+ * @brief SetResetProceed function
+ * 
+ * More details
+*/
+void ara::com::UpdateRequest::SetResetProceed(bool setProceed)
+{
+  resetProceed = setProceed;
+}
+
+/**
+ * @brief GetResetProceed function
+ * 
+ * More details
+*/
+bool ara::com::UpdateRequest::GetResetProceed(void) const
+{
+  return resetProceed;
 }

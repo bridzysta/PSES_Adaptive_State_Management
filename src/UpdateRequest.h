@@ -20,12 +20,27 @@ namespace ara
         class UpdateRequest 
         {
             public:
+                UpdateRequest();
+
                 void PrepareRollback(void);
-                void PrepareUpdate(void);
-                void ResetMachine(void);
-                void StartUpdateSession(void);
-                void StopUpdateSession(void);
+                bool PrepareUpdate(void);
+                bool ResetMachine(void);
+                void StartUpdateSession(bool startUpdate);
+                bool StopUpdateSession(void);
                 void VerifyUpdate(void);
+
+                void SetUpdateSession(bool setUpdate);
+                bool GetUpdateSession(void) const;
+
+                void SetResetRequest(bool setRequest);
+                bool GetResetRequest(void) const;
+                
+                void SetResetProceed(bool setProceed);
+                bool GetResetProceed(void) const;
+            private:
+                bool resetRequest;
+                bool resetProceed;
+                bool updateSession;
         };
     }
 }

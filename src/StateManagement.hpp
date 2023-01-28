@@ -7,12 +7,16 @@
 #include "TriggerInOut.h"
 #include "TriggerOut.h"
 #include "TriggerIn.h"
+#include "UpdateRequest.h"
 
 namespace ara::sm {
 
     class StateManagement : public dia::EcuResetRequest, public phm::RecoveryAction {
         public:
         StateManagement();
+
+        //UpdateRequest
+        com::UpdateRequest myUpdateRequest;
 
         //Triggers
         com::TriggerInOut myTriggerInOut;

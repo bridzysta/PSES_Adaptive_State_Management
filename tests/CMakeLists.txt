@@ -11,6 +11,7 @@ add_executable(StateManagementUT
     TestOfTriggerInOut.cpp
     TestOfTriggerOut.cpp
     TestOfTriggerIn.cpp
+    TestOfUpdateRequest.cpp
 )
 
 target_link_libraries(StateManagementUT
