@@ -11,12 +11,17 @@ namespace ara::sm {
         public:
         StateManagement();
 
+        // DIA
+        int requestedResetID = 0;
+        int executingResetID = 0;
+        bool rapidShutdownEnabled = false;
+
         private:
         // DIA
-        void EnableRapidShutdown();
+        void EnableRapidShutdown(bool enabled);
         void ExecuteReset();
-        void GetLastResetCause();
-        void RequestReset();
+        int GetLastResetCause();
+        void RequestReset(int resetID);
 
         // PHM
         void RecoveryHandler(bool *isError);
