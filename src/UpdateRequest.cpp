@@ -5,7 +5,7 @@
 
   @brief UpdateRequest class definition
   
-  SWS Reqs: [SWS_SM_91016]
+  SWS Reqs: [SWS_SM_91017]
 
   @copyright AGH University of Science and Technology  
 \*===========================================================================*/
@@ -19,16 +19,17 @@
 */
 ara::com::UpdateRequest::UpdateRequest() : resetRequest{false},
                                            resetProceed{false},
-                                           updateSession{false} {}
+                                           updateSession{false},
+                                           FunctionGroupList{"sample"} {}
 
 /**
  * @brief PrepareRollback function
  * 
  * More details
 */
-void ara::com::UpdateRequest::PrepareRollback(void)
+void ara::com::UpdateRequest::PrepareRollback(sm::FunctionGroupListType groupList)
 {
-
+  FunctionGroupList = groupList;
 }
 
 /**
@@ -36,9 +37,17 @@ void ara::com::UpdateRequest::PrepareRollback(void)
  * 
  * More details
 */
-bool ara::com::UpdateRequest::PrepareUpdate(void)
+bool ara::com::UpdateRequest::PrepareUpdate(sm::FunctionGroupListType groupList)
 {
-
+  if(!updateSession)
+  {
+    return false;
+  }
+  else
+  {
+    FunctionGroupList = groupList;
+    return true;
+  }
 }
 
 /**
@@ -91,9 +100,17 @@ bool ara::com::UpdateRequest::StopUpdateSession(void)
  * 
  * More details
 */
-void ara::com::UpdateRequest::VerifyUpdate()
+bool ara::com::UpdateRequest::VerifyUpdate(sm::FunctionGroupListType groupList)
 {
-
+  if(!updateSession)
+  {
+    return false;
+  }
+  else
+  {
+    FunctionGroupList = groupList;
+    return true;
+  }
 }
 
 /**
@@ -154,4 +171,14 @@ void ara::com::UpdateRequest::SetResetProceed(bool setProceed)
 bool ara::com::UpdateRequest::GetResetProceed(void) const
 {
   return resetProceed;
+}
+
+/**
+ * @brief GetFunctionGroupList function
+ * 
+ * More details
+*/
+ara::sm::FunctionGroupListType ara::com::UpdateRequest::GetFunctionGroupList(void) const
+{
+  return FunctionGroupList;
 }

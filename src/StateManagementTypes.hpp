@@ -11,6 +11,7 @@
 #define STATE_MANAGEMENT_TYPES_HPP
 
 #include "string"
+#include <vector>
 
 namespace ara::sm {
 
@@ -77,6 +78,9 @@ namespace ara::sm {
         /* reset not supported. */
         kNotSupported
     };
+
+    /* @brief SWS Reqs: [SWS_SM_91019] */
+    typedef std::vector<std::string> FunctionGroupListType;
 
 }
 

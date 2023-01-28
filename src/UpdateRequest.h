@@ -8,10 +8,14 @@
 
   @brief UpdateRequest class initialization
   
-  SWS Reqs: [SWS_SM_91016]
+  SWS Reqs: [SWS_SM_91017]
 
   @copyright AGH University of Science and Technology  
 \*===========================================================================*/
+
+#include "StateManagementTypes.hpp"
+#include <string>
+#include <vector>
 
 namespace ara 
 {     
@@ -22,12 +26,12 @@ namespace ara
             public:
                 UpdateRequest();
 
-                void PrepareRollback(void);
-                bool PrepareUpdate(void);
+                void PrepareRollback(sm::FunctionGroupListType groupList);
+                bool PrepareUpdate(sm::FunctionGroupListType groupList);
                 bool ResetMachine(void);
                 void StartUpdateSession(bool startUpdate);
                 bool StopUpdateSession(void);
-                void VerifyUpdate(void);
+                bool VerifyUpdate(sm::FunctionGroupListType groupList);
 
                 void SetUpdateSession(bool setUpdate);
                 bool GetUpdateSession(void) const;
@@ -37,10 +41,13 @@ namespace ara
                 
                 void SetResetProceed(bool setProceed);
                 bool GetResetProceed(void) const;
+
+                sm::FunctionGroupListType GetFunctionGroupList(void) const;
             private:
                 bool resetRequest;
                 bool resetProceed;
                 bool updateSession;
+                sm::FunctionGroupListType FunctionGroupList;
         };
     }
 }

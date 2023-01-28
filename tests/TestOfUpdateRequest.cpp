@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "StateManagementTest.hpp"
+#include "StateManagementTypes.hpp"
 
 TEST_F(StateManagementTest, PosTestOfStartUpdateSession)
 {
@@ -77,4 +78,92 @@ TEST_F(StateManagementTest, PosTestOfResetProceed)
 
     /* assert */
     EXPECT_TRUE(mySM.myUpdateRequest.GetResetProceed());
+}
+
+TEST_F(StateManagementTest, PosTestOfPrepareRollback)
+{
+    //positive test
+
+    /* arrange */
+    ara::sm::FunctionGroupListType groupList = {"groupList"};
+
+    /* act */
+    mySM.myUpdateRequest.PrepareRollback(groupList);
+
+    /* assert */
+    EXPECT_EQ(mySM.myUpdateRequest.GetFunctionGroupList(), groupList);
+}
+
+TEST_F(StateManagementTest, PosTestOfPrepareUpdate)
+{
+    //positive test
+
+    /* arrange */
+    ara::sm::FunctionGroupListType groupList = {"groupList"};
+    bool result = false;
+
+    /* act */
+    mySM.myUpdateRequest.SetUpdateSession(true);
+    result = mySM.myUpdateRequest.PrepareUpdate(groupList);
+
+    /* assert */
+    EXPECT_TRUE(mySM.myUpdateRequest.GetUpdateSession());
+    EXPECT_TRUE(result);
+    EXPECT_EQ(mySM.myUpdateRequest.GetFunctionGroupList(), groupList);
+}
+
+TEST_F(StateManagementTest, NegTestOfPrepareUpdate)
+{
+    //negative test
+
+    /* arrange */
+    ara::sm::FunctionGroupListType groupList = {"groupList"};
+    ara::sm::FunctionGroupListType groupListInit = {"sample"};
+    bool result = false;
+
+    /* act */
+    mySM.myUpdateRequest.SetUpdateSession(false);
+    result = mySM.myUpdateRequest.PrepareUpdate(groupList);
+
+    /* assert */
+    EXPECT_FALSE(mySM.myUpdateRequest.GetUpdateSession());
+    EXPECT_FALSE(result);
+    EXPECT_EQ(mySM.myUpdateRequest.GetFunctionGroupList(), groupListInit);
+}
+
+TEST_F(StateManagementTest, PosTestOfVerifyUpdate)
+{
+    //positive test
+
+    /* arrange */
+    ara::sm::FunctionGroupListType groupList = {"groupList"};
+    bool result = false;
+
+    /* act */
+    mySM.myUpdateRequest.SetUpdateSession(true);
+    result = mySM.myUpdateRequest.VerifyUpdate(groupList);
+
+    /* assert */
+    EXPECT_TRUE(mySM.myUpdateRequest.GetUpdateSession());
+    EXPECT_TRUE(result);
+    EXPECT_EQ(mySM.myUpdateRequest.GetFunctionGroupList(), groupList);
+}
+
+TEST_F(StateManagementTest, NegTestOfVerifyUpdate)
+{
+    //negative test
+
+    /* arrange */
+    ara::sm::FunctionGroupListType groupList = {"groupList"};
+    ara::sm::FunctionGroupListType groupListInit = {"sample"};
+    bool result = false;
+
+    /* act */
+    mySM.myUpdateRequest.SetUpdateSession(false);
+    result = mySM.myUpdateRequest.VerifyUpdate(groupList);
+
+    /* assert */
+    EXPECT_FALSE(mySM.myUpdateRequest.GetUpdateSession());
+    EXPECT_FALSE(result);
+    EXPECT_EQ(mySM.myUpdateRequest.GetFunctionGroupList(), groupListInit);
 }
