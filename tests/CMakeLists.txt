@@ -6,7 +6,6 @@ add_executable(StateManagementUT
     RunAllTests.cpp
     StateManagementTest.hpp
     StateManagementTest.cpp
-    TestOfNothing.cpp
     TestOfRecoveryAction.cpp
     TestOfEcuResetRequest.cpp
 )
