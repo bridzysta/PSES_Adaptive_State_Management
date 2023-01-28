@@ -4,12 +4,22 @@
 #include "StateManagementTypes.hpp"
 #include "EcuResetRequest.hpp"
 #include "RecoveryAction.hpp"
+#include "TriggerInOut.h"
+#include "TriggerOut.h"
+#include "TriggerIn.h"
 
 namespace ara::sm {
 
     class StateManagement : public dia::EcuResetRequest, public phm::RecoveryAction {
         public:
         StateManagement();
+
+        //Triggers
+        com::TriggerInOut myTriggerInOut;
+        /* @brief SWS Reqs: [SWS_SM_00020] */
+        com::TriggerOut myTriggerOut;
+        /* @brief SWS Reqs: [SWS_SM_00021] */
+        com::TriggerIn myTriggerIn;
 
         // DIA
         int requestedResetID = 0;
