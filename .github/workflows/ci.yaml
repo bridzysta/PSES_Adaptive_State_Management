@@ -39,8 +39,70 @@ jobs:
       working-directory: build
       run: |
         make StateManagementUT
-        ./tests/StateManagementUT
+        ./tests/StateManagementUT --gtest_output=xml:../test-reports/UTs_report.xml
 
     - name: Run Code Coverage
       working-directory: build
       run: make StateManagementCov
+
+    - name: XUnit Viewer
+      id: xunit-viewer
+      uses: AutoModality/action-xunit-viewer@v1
+
+    - name: Attach the GTest Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: UT_Report
+        path: ${{ steps.xunit-viewer.outputs.report-dir }}
+
+    - name: Attach the Coverage Report
+      uses: actions/upload-artifact@v3
+      with:
+        name: Cov_Report
+        path: build/StateManagementCov
+
+    - name: Attach the index.html
+      uses: actions/upload-artifact@v3
+      with:
+        name: Page_Index
+        path: .github/index.html
+
+  Create_GH_Page:
+    needs: CI
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: Page_Index
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: UT_Report
+          path: ./TestReport/
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: Cov_Report
+          path: ./CovReport/
+
+      # - uses: actions/download-artifact@v3
+      #   with:
+      #     name: Cppcheck_Report
+      #     path: ./Cppcheck/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: './'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
