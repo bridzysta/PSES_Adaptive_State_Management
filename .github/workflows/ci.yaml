@@ -12,8 +12,11 @@ env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Debug
 
+
+### Build
+
 jobs:
-  build:
+  Build:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,6 +34,14 @@ jobs:
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
+
+### UnitTests
+
+  UnitTests:
+    needs: Build
+    runs-on: ubuntu-latest
+
+    steps:
     - name: Run Unit Tests
       working-directory: ${{github.workspace}}/build
       # Execute tests defined by the CMake configuration.
