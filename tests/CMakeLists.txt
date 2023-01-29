@@ -15,3 +15,12 @@ target_link_libraries(StateManagementUT
     StateManagementLib
 )
 add_test(NAME StateManagementUT COMMAND StateManagementUT)
+add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure)
+
+
+# Coverage
+setup_target_for_coverage_gcovr_html (
+        NAME StateManagementCov
+        EXECUTABLE StateManagementUT
+        EXCLUDE deps/
+)
