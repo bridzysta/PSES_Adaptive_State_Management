@@ -9,6 +9,11 @@ set(CMAKE_C_FLAGS "-Wall")
 include(Dart)
 include(CTest)
 
+# Coverage
+set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake_modules)
+include(CodeCoverage)
+append_coverage_compiler_flags()
+
 add_subdirectory(src)
 
 # Testing
