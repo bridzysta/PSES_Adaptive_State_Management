@@ -14,6 +14,10 @@ set(Sources
     TriggerInOut.h
     UpdateRequest.cpp
     UpdateRequest.h
+    ExecutionClient.cpp
+    ExecutionClient.hpp
+    StateClient.cpp
+    StateClient.hpp
 )
 
 add_library(StateManagementLib ${Sources})
