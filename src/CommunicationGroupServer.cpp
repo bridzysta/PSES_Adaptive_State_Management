@@ -4,50 +4,38 @@
   @authors Przemyslaw Kurzak
 
   @brief CommunicationGroupServer class definition
-  
-  More details.
+  @details SWS Req: [SWS_SM_91020]
 
   @copyright AGH University of Science and Technology  
 \*===========================================================================*/
 
 #include "CommunicationGroupServer.h"
 
-/**
- * @brief Broadcast function
- * 
- * More details
-*/
-void ara::com::CommunicationGroupServer::Broadcast()
+template <class T>
+void ara::com::CommunicationGroupServer<T>::Broadcast(std::string msg)
 {
 
 }
 
-/**
- * @brief ListClients function
- * 
- * More details
-*/
-void ara::com::CommunicationGroupServer::ListClients()
+template <class T>
+void ara::com::CommunicationGroupServer<T>::ListClients()
 {
 
 }
 
-/**
- * @brief Message function
- * 
- * More details
-*/
-void ara::com::CommunicationGroupServer::Message()
+template <class T>
+void ara::com::CommunicationGroupServer<T>::Message()
 {
 
 }
 
-/**
- * @brief Response function
- * 
- * More details
-*/
-void ara::com::CommunicationGroupServer::Response()
+template <class T> 
+Response_t ara::com::CommunicationGroupServer<T>::Response(void)
 {
+  return response;
+}
 
+void SetResponse_t(Response_t setResponse)
+{
+  response = setResponse;
 }

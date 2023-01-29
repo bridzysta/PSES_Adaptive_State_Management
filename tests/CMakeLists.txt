@@ -13,6 +13,8 @@ add_executable(StateManagementUT
     TestOfTriggerIn.cpp
     TestOfUpdateRequest.cpp
     TestOfPowerMode.cpp
+    CommunicationGroupServerTest.h
+    TestOfCommunicationGroupServer.cpp
 )
 
 target_link_libraries(StateManagementUT
