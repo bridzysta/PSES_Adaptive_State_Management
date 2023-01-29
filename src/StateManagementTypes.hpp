@@ -79,7 +79,9 @@ namespace ara::sm {
         kNotSupported
     };
 
-    /* @brief SWS Reqs: [SWS_SM_91019] */
+    /** @brief full qualified FunctionGroup shortName 
+     *  @details SWS Reqs: [SWS_SM_91019] 
+    */
     typedef std::vector<std::string> FunctionGroupListType;
 
 }

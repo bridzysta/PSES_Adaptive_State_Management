@@ -48,7 +48,8 @@ namespace ara::sm {
         *isError = false;
     }
 
-
+    PowerMode::PowerMode() : msgToSend{false},
+                             powerModeMsg{"sample"} {}
 
     /**
      * @brief sends PowerModeMsg
@@ -58,8 +59,30 @@ namespace ara::sm {
      *
      * sends PowerModeMsg defined in 9.1 Type definition to all Processes to request a PowerMode.
      */
-    void PowerMode::message(PowerModeMsg msg){
-        // something like CommunicationGroup send msg
+    bool PowerMode::message(std::string msg)
+    {
+        if( (msg != sm::PowerModeMsg::On) &&
+            (msg != sm::PowerModeMsg::Off) &&
+            (msg != sm::PowerModeMsg::Suspend) )
+        {
+            return false;
+        }
+        else
+        {
+            powerModeMsg = msg;
+            msgToSend = true;
+            return true;
+        }
+    }
+
+    bool PowerMode::GetMsgToSend(void) const
+    {
+        return msgToSend;
+    }
+    
+    std::string PowerMode::GetPowerModeMsg(void) const
+    {
+        return powerModeMsg;
     }
 
     /**

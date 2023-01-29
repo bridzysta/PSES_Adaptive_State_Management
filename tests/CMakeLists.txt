@@ -12,6 +12,7 @@ add_executable(StateManagementUT
     TestOfTriggerOut.cpp
     TestOfTriggerIn.cpp
     TestOfUpdateRequest.cpp
+    TestOfPowerMode.cpp
 )
 
 target_link_libraries(StateManagementUT

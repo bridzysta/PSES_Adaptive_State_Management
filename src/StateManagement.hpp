@@ -47,8 +47,17 @@ namespace ara::sm {
      */
     class PowerMode {
         public:
-        void message(PowerModeMsg msg);
-        void event(PowerModeRespMsg &respMsg);
+            PowerMode();
+
+            bool message(std::string msg);
+            void event(PowerModeRespMsg &respMsg);
+
+            bool GetMsgToSend(void) const;
+            std::string GetPowerModeMsg(void) const;
+
+        private:
+            std::string powerModeMsg;
+            bool msgToSend;
     };
 
     /**

@@ -9,6 +9,7 @@
 class StateManagementTest : public testing::Test {
     protected:
     ara::sm::StateManagement mySM;
+    ara::sm::PowerMode myPM;
 
     StateManagementTest();
     ~StateManagementTest() override;
