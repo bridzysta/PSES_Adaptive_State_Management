@@ -48,8 +48,10 @@ namespace ara::sm {
         *isError = false;
     }
 
-    PowerMode::PowerMode() : msgToSend{false},
-                             powerModeMsg{"sample"} {}
+    PowerMode::PowerMode() : powerModeMsg{"sample"},
+                             processResponse{ara::sm::PowerModeRespMsg::kDone},
+                             msgToSend{false},
+                             msgToSM{false} {}
 
     /**
      * @brief sends PowerModeMsg
@@ -85,6 +87,16 @@ namespace ara::sm {
         return powerModeMsg;
     }
 
+    sm::PowerModeRespMsg PowerMode::GetProcessResponse(void) const
+    {
+        return processResponse;
+    }
+
+    bool PowerMode::GetMsgToSM(void) const
+    {
+        return msgToSM;
+    }
+
     /**
      * @brief event from Process
      *
@@ -94,7 +106,8 @@ namespace ara::sm {
      * All Processes which got a PowerMode request sends this as answer to State Management
      */
     void PowerMode::event(PowerModeRespMsg &respMsg){
-        // something like wait for event from CommunicationGroup and then do sth with respMsg
+        processResponse = respMsg;
+        msgToSM = true;
     }
 
     /**

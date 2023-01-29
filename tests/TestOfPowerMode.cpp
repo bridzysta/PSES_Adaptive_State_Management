@@ -34,3 +34,18 @@ TEST_F(StateManagementTest, NegTestOfMessage)
     EXPECT_FALSE(myPM.GetMsgToSend());
     EXPECT_EQ(myPM.GetPowerModeMsg(), "sample");
 }
+
+TEST_F(StateManagementTest, PosTestOfEvent)
+{
+    //positive test
+
+    /* arrange */
+    ara::sm::PowerModeRespMsg respMsg = ara::sm::PowerModeRespMsg::kDone;
+
+    /* act */
+    myPM.event(respMsg);
+
+    /* assert */
+    EXPECT_TRUE(myPM.GetMsgToSM());
+    EXPECT_EQ(myPM.GetProcessResponse(), respMsg);
+}

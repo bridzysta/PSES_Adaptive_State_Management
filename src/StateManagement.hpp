@@ -54,10 +54,14 @@ namespace ara::sm {
 
             bool GetMsgToSend(void) const;
             std::string GetPowerModeMsg(void) const;
+            sm::PowerModeRespMsg GetProcessResponse(void) const;
+            bool GetMsgToSM(void) const;
 
         private:
             std::string powerModeMsg;
+            sm::PowerModeRespMsg processResponse;
             bool msgToSend;
+            bool msgToSM;
     };
 
     /**
