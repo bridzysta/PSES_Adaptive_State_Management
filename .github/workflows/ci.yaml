@@ -45,6 +45,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        submodules: recursive
+
     - name: Run Unit Tests
       working-directory: ${{github.workspace}}/build
       # Execute tests defined by the CMake configuration.
