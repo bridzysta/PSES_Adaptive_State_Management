@@ -4,12 +4,26 @@
 #include "StateManagementTypes.hpp"
 #include "EcuResetRequest.hpp"
 #include "RecoveryAction.hpp"
+#include "TriggerInOut.h"
+#include "TriggerOut.h"
+#include "TriggerIn.h"
+#include "UpdateRequest.h"
 
 namespace ara::sm {
 
     class StateManagement : public dia::EcuResetRequest, public phm::RecoveryAction {
         public:
         StateManagement();
+
+        //UpdateRequest
+        com::UpdateRequest myUpdateRequest;
+
+        //Triggers
+        com::TriggerInOut myTriggerInOut;
+        /* @brief SWS Reqs: [SWS_SM_00020] */
+        com::TriggerOut myTriggerOut;
+        /* @brief SWS Reqs: [SWS_SM_00021] */
+        com::TriggerIn myTriggerIn;
 
         // DIA
         int requestedResetID = 0;
@@ -33,8 +47,21 @@ namespace ara::sm {
      */
     class PowerMode {
         public:
-        void message(PowerModeMsg msg);
-        void event(PowerModeRespMsg &respMsg);
+            PowerMode();
+
+            bool message(std::string msg);
+            void event(PowerModeRespMsg &respMsg);
+
+            bool GetMsgToSend(void) const;
+            std::string GetPowerModeMsg(void) const;
+            sm::PowerModeRespMsg GetProcessResponse(void) const;
+            bool GetMsgToSM(void) const;
+
+        private:
+            std::string powerModeMsg;
+            sm::PowerModeRespMsg processResponse;
+            bool msgToSend;
+            bool msgToSM;
     };
 
     /**
