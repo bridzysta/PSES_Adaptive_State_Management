@@ -79,11 +79,7 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Run cppcheck
-      uses: deep5050/cppcheck-action@v3.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN}}
-        other_options: --language=c++ --std=c++17 --enable=all --addon=cert.py
-        output_file: .github/cppcheck_report.txt
+      uses: .github/workflows/cppcheck.yaml
 
     - name: Attach the cppcheck result
       uses: actions/upload-artifact@v3
