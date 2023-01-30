@@ -75,7 +75,8 @@ jobs:
   CppCheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
 
     - name: Run cppcheck
       uses: deep5050/cppcheck-action@v3.0
@@ -97,35 +98,36 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: Page_Index
+    - uses: actions/download-artifact@v3
+      with:
+        name: Page_Index
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: UT_Report
-          path: ./TestReport/
+    - uses: actions/download-artifact@v3
+      with:
+        name: UT_Report
+        path: ./TestReport/
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: Cov_Report
-          path: ./CovReport/
+    - uses: actions/download-artifact@v3
+      with:
+        name: Cov_Report
+        path: ./CovReport/
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: Cppcheck_Report
-          path: ./CppcheckReport/
+    - uses: actions/download-artifact@v3
+      with:
+        name: Cppcheck_Report
+        path: ./CppcheckReport/
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
+    - name: Setup Pages
+      uses: actions/configure-pages@v2
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: './'
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: './'
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
