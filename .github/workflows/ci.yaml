@@ -5,8 +5,13 @@ on:
     branches:
       - '**'
   pull_request:
-
   workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+  pages: write
+  id-token: write
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
