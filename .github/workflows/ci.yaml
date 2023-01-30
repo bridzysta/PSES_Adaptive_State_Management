@@ -72,42 +72,62 @@ jobs:
         name: Page_Index
         path: .github/index.html
 
+  CppCheck:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Run cppcheck
+      uses: deep5050/cppcheck-action@v3.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN}}
+        other_options: --language=c++ --std=c++17 --enable=all --addon=cert.py
+        output_file: .github/cppcheck_report.txt
+
+    - name: Attach the cppcheck result
+      uses: actions/upload-artifact@v3
+      with:
+        name: Cppcheck_Report
+        path: .github/cppcheck_report.txt
+
   Create_GH_Page:
-    needs: CI
+    needs: [CI, CppCheck]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: Page_Index
+    - uses: actions/download-artifact@v3
+      with:
+        name: Page_Index
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: UT_Report
-          path: ./TestReport/
+    - uses: actions/download-artifact@v3
+      with:
+        name: UT_Report
+        path: ./TestReport/
 
-      - uses: actions/download-artifact@v3
-        with:
-          name: Cov_Report
-          path: ./CovReport/
+    - uses: actions/download-artifact@v3
+      with:
+        name: Cov_Report
+        path: ./CovReport/
 
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: Cppcheck_Report
-      #     path: ./Cppcheck/
+    - uses: actions/download-artifact@v3
+      with:
+        name: Cppcheck_Report
+        path: ./CppcheckReport/
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
+    - name: Setup Pages
+      uses: actions/configure-pages@v2
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        with:
-          path: './'
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v1
+      with:
+        path: './'
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v1
