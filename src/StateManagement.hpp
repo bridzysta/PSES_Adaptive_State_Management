@@ -32,13 +32,13 @@ namespace ara::sm {
 
         private:
         // DIA
-        void EnableRapidShutdown(bool enabled);
-        void ExecuteReset();
-        int GetLastResetCause();
-        void RequestReset(int resetID);
+        void EnableRapidShutdown(bool enabled) override;
+        void ExecuteReset() override;
+        int GetLastResetCause() override;
+        void RequestReset(int resetID) override;
 
         // PHM
-        void RecoveryHandler(bool *isError);
+        void RecoveryHandler(bool *isError) override;
     };
 
     /**
