@@ -72,6 +72,24 @@ jobs:
         name: Page_Index
         path: .github/index.html
 
+  CppCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+    - name: Run cppcheck
+      uses: deep5050/cppcheck-action@v3.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN}}
+        other_options: --language=c++ --std=c++17 --enable=all --addon=cert.py
+        output_file: .github/cppcheck_report.txt
+
+    - name: Attach the cppcheck result
+      uses: actions/upload-artifact@v3
+      with:
+        name: Cppcheck_Report
+        path: .github/cppcheck_report.txt
+
   Create_GH_Page:
     needs: CI
     environment:
@@ -95,10 +113,10 @@ jobs:
           name: Cov_Report
           path: ./CovReport/
 
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: Cppcheck_Report
-      #     path: ./Cppcheck/
+      - uses: actions/download-artifact@v3
+        with:
+          name: Cppcheck_Report
+          path: ./CppcheckReport/
 
       - name: Setup Pages
         uses: actions/configure-pages@v2
