@@ -1,184 +1,96 @@
-/** =========================================================================*\
-  @file UpdateRequest.cpp
-  @date 28.01.2023
-  @authors Przemyslaw Kurzak
-
-  @brief UpdateRequest class definition
-  
-  SWS Reqs: [SWS_SM_91017]
-
-  @copyright AGH University of Science and Technology  
-\*===========================================================================*/
-
-#include "UpdateRequest.h"
-
 /**
- * @brief UpdateRequest function
- * 
- * More details
-*/
-ara::com::UpdateRequest::UpdateRequest() : resetRequest{false},
-                                           resetProceed{false},
-                                           updateSession{false},
-                                           FunctionGroupList{"sample"} {}
+ * @file UpdateRequest.cpp
+ * @date 28.01.2023
+ * @authors Przemyslaw Kurzak
+ *
+ * @brief UpdateRequest class definition
+ * @details SWS Reqs: [SWS_SM_91017]
+ *
+ * @copyright AGH University of Science and Technology
+ */
 
-/**
- * @brief PrepareRollback function
- * 
- * More details
-*/
-void ara::com::UpdateRequest::PrepareRollback(sm::FunctionGroupListType groupList)
-{
-  FunctionGroupList = groupList;
-}
+#include "UpdateRequest.hpp"
 
-/**
- * @brief PrepareUpdate function
- * 
- * More details
-*/
-bool ara::com::UpdateRequest::PrepareUpdate(sm::FunctionGroupListType groupList)
-{
-  if(!updateSession)
-  {
-    return false;
-  }
-  else
-  {
-    FunctionGroupList = groupList;
-    return true;
-  }
-}
+namespace ara::com {
 
-/**
- * @brief ResetMachine function
- * 
- * More details
-*/
-bool ara::com::UpdateRequest::ResetMachine(void)
-{
-  resetRequest = true;
+    UpdateRequest::UpdateRequest() :
+        resetRequest{false},
+        resetProceed{false},
+        updateSession{false},
+        FunctionGroupList{"sample"} {}
 
-  while(resetRequest)
-  {
+    void UpdateRequest::PrepareRollback(sm::FunctionGroupListType groupList) {
+        FunctionGroupList = groupList;
+    }
 
-  }
-  
-  return resetProceed ? true : false;
-}
+    bool UpdateRequest::PrepareUpdate(sm::FunctionGroupListType groupList) {
+        if(!updateSession) {
+            return false;
+        }
+        else {
+            FunctionGroupList = groupList;
+            return true;
+        }
+    }
 
-/**
- * @brief StartUpdateSession function
- * 
- * More details
-*/
-void ara::com::UpdateRequest::StartUpdateSession(bool startUpdate)
-{
-  updateSession = startUpdate;
-}
+    bool UpdateRequest::ResetMachine(void) {
+        resetRequest = true;
 
-/**
- * @brief StopUpdateSession function
- * 
- * More details
-*/
-bool ara::com::UpdateRequest::StopUpdateSession(void)
-{
-  if(updateSession)
-  {
-    updateSession = false;
-    return true;
-  }
-  else
-  {
-    return false;
-  }
-}
+        while(resetRequest) {}
 
-/**
- * @brief VerifyUpdate function
- * 
- * More details
-*/
-bool ara::com::UpdateRequest::VerifyUpdate(sm::FunctionGroupListType groupList)
-{
-  if(!updateSession)
-  {
-    return false;
-  }
-  else
-  {
-    FunctionGroupList = groupList;
-    return true;
-  }
-}
+        return resetProceed ? true : false;
+    }
 
-/**
- * @brief SetUpdateSession function
- * 
- * More details
-*/
-void ara::com::UpdateRequest::SetUpdateSession(bool setUpdate)
-{
-  updateSession = setUpdate;
-}
+    void UpdateRequest::StartUpdateSession(bool startUpdate) {
+        updateSession = startUpdate;
+    }
 
-/**
- * @brief GetUpdateSession function
- * 
- * More details
-*/
-bool ara::com::UpdateRequest::GetUpdateSession(void) const
-{
-  return updateSession;
-}
+    bool UpdateRequest::StopUpdateSession(void) {
+        if(updateSession) {
+            updateSession = false;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
-/**
- * @brief SetUpdateSession function
- * 
- * More details
-*/
-void ara::com::UpdateRequest::SetResetRequest(bool setRequest)
-{
-  resetRequest = setRequest;
-}
+    bool UpdateRequest::VerifyUpdate(sm::FunctionGroupListType groupList) {
+        if(!updateSession) {
+            return false;
+        }
+        else {
+            FunctionGroupList = groupList;
+            return true;
+        }
+    }
 
-/**
- * @brief GetResetRequest function
- * 
- * More details
-*/
-bool ara::com::UpdateRequest::GetResetRequest(void) const
-{
-  return resetRequest;
-}
+    void UpdateRequest::SetUpdateSession(bool setUpdate) {
+        updateSession = setUpdate;
+    }
 
-/**
- * @brief SetResetProceed function
- * 
- * More details
-*/
-void ara::com::UpdateRequest::SetResetProceed(bool setProceed)
-{
-  resetProceed = setProceed;
-}
+    bool UpdateRequest::GetUpdateSession(void) const {
+        return updateSession;
+    }
 
-/**
- * @brief GetResetProceed function
- * 
- * More details
-*/
-bool ara::com::UpdateRequest::GetResetProceed(void) const
-{
-  return resetProceed;
-}
+    void UpdateRequest::SetResetRequest(bool setRequest) {
+        resetRequest = setRequest;
+    }
 
-/**
- * @brief GetFunctionGroupList function
- * 
- * More details
-*/
-ara::sm::FunctionGroupListType ara::com::UpdateRequest::GetFunctionGroupList(void) const
-{
-  return FunctionGroupList;
+    bool UpdateRequest::GetResetRequest(void) const {
+        return resetRequest;
+    }
+
+    void UpdateRequest::SetResetProceed(bool setProceed) {
+        resetProceed = setProceed;
+    }
+
+    bool UpdateRequest::GetResetProceed(void) const {
+        return resetProceed;
+    }
+
+    sm::FunctionGroupListType UpdateRequest::GetFunctionGroupList(void) const {
+        return FunctionGroupList;
+    }
+
 }

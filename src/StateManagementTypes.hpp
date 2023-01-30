@@ -11,7 +11,7 @@
 #define STATE_MANAGEMENT_TYPES_HPP
 
 #include "string"
-#include <vector>
+#include "vector"
 
 namespace ara::sm {
 
@@ -79,8 +79,8 @@ namespace ara::sm {
         kNotSupported
     };
 
-    /** @brief full qualified FunctionGroup shortName 
-     *  @details SWS Reqs: [SWS_SM_91019] 
+    /** @brief full qualified FunctionGroup shortName
+     *  @details SWS Reqs: [SWS_SM_91019]
     */
     typedef std::vector<std::string> FunctionGroupListType;
 

@@ -1,33 +1,24 @@
-/** =========================================================================*\
-  @file TriggerOut.cpp
-  @date 28.01.2023
-  @authors Przemyslaw Kurzak
-
-  @brief TriggerOut class definition
-  
-  SWS Reqs: [SWS_SM_91008]
-
-  @copyright AGH University of Science and Technology  
-\*===========================================================================*/
-
-#include "TriggerOut.h"
-
 /**
- * @brief IsNotifier function
- * 
- * More details
-*/
-bool ara::com::TriggerOut::IsNotifier(void) const 
-{
-    return notifier;
-}
+ * @file TriggerOut.cpp
+ * @date 28.01.2023
+ * @authors Przemyslaw Kurzak
+ *
+ * @brief TriggerOut class definition
+ * @details SWS Reqs: [SWS_SM_91008]
+ *
+ * @copyright AGH University of Science and Technology
+ */
 
-/**
- * @brief SetNotifier function
- * 
- * More details
-*/
-void ara::com::TriggerOut::SetNotifier(bool setNotifier) 
-{
-    notifier = setNotifier;
+#include "TriggerOut.hpp"
+
+namespace ara::com{
+
+    bool TriggerOut::IsNotifier(void) const {
+        return notifier;
+    }
+
+    void TriggerOut::SetNotifier(bool setNotifier) {
+        notifier = setNotifier;
+    }
+
 }

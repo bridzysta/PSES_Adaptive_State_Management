@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "CommunicationGroupServerTest.h"
+#include "CommunicationGroupServerTest.hpp"
 
 TEST_F(CommunicationGroupServerTest, PosTestOfResponse)
 {

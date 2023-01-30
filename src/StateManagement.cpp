@@ -1,11 +1,8 @@
 #include "StateManagement.hpp"
-#include "iostream"
 
 namespace ara::sm {
 
-    StateManagement::StateManagement() {
-
-    }
+    StateManagement::StateManagement() {}
 
     // Diagnostics
 
@@ -44,14 +41,15 @@ namespace ara::sm {
         requestedResetID = resetID;
     }
 
-    void StateManagement::RecoveryHandler(bool *isError){
+    void StateManagement::RecoveryHandler(bool *isError) {
         *isError = false;
     }
 
-    PowerMode::PowerMode() : powerModeMsg{"sample"},
-                             processResponse{ara::sm::PowerModeRespMsg::kDone},
-                             msgToSend{false},
-                             msgToSM{false} {}
+    PowerMode::PowerMode() :
+        powerModeMsg{"sample"},
+        processResponse{PowerModeRespMsg::kDone},
+        msgToSend{false},
+        msgToSM{false} {}
 
     /**
      * @brief sends PowerModeMsg
@@ -61,39 +59,30 @@ namespace ara::sm {
      *
      * sends PowerModeMsg defined in 9.1 Type definition to all Processes to request a PowerMode.
      */
-    bool PowerMode::message(std::string msg)
-    {
-        if( (msg != sm::PowerModeMsg::On) &&
-            (msg != sm::PowerModeMsg::Off) &&
-            (msg != sm::PowerModeMsg::Suspend) )
-        {
+    bool PowerMode::message(std::string msg) {
+        if((msg != PowerModeMsg::On) && (msg != PowerModeMsg::Off) && (msg != PowerModeMsg::Suspend)) {
             return false;
         }
-        else
-        {
+        else {
             powerModeMsg = msg;
             msgToSend = true;
             return true;
         }
     }
 
-    bool PowerMode::GetMsgToSend(void) const
-    {
+    bool PowerMode::GetMsgToSend(void) const {
         return msgToSend;
     }
-    
-    std::string PowerMode::GetPowerModeMsg(void) const
-    {
+
+    std::string PowerMode::GetPowerModeMsg(void) const {
         return powerModeMsg;
     }
 
-    sm::PowerModeRespMsg PowerMode::GetProcessResponse(void) const
-    {
+    PowerModeRespMsg PowerMode::GetProcessResponse(void) const {
         return processResponse;
     }
 
-    bool PowerMode::GetMsgToSM(void) const
-    {
+    bool PowerMode::GetMsgToSM(void) const {
         return msgToSM;
     }
 
@@ -105,7 +94,7 @@ namespace ara::sm {
      *
      * All Processes which got a PowerMode request sends this as answer to State Management
      */
-    void PowerMode::event(PowerModeRespMsg &respMsg){
+    void PowerMode::event(PowerModeRespMsg &respMsg) {
         processResponse = respMsg;
         msgToSM = true;
     }
@@ -119,7 +108,7 @@ namespace ara::sm {
      * sends DiagnosticResetMsg defined in 9.1 Type definition
      * to all Processes in a SoftwareCluster.
      */
-    void DiagnosticReset::message(DiagnosticResetMsg msg){
+    void DiagnosticReset::message(DiagnosticResetMsg msg) {
         // something like CommunicationGroup send msg
     }
 
@@ -131,7 +120,7 @@ namespace ara::sm {
      *
      * All Processes which got a DiagnosticReset request sends this as answer to State Management
      */
-    void DiagnosticReset::event(DiagnosticResetRespMsg &respMsg){
+    void DiagnosticReset::event(DiagnosticResetRespMsg &respMsg) {
         // something like wait for event from CommunicationGroup and then do sth with respMsg
     }
 

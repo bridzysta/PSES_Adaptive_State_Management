@@ -1,8 +1,10 @@
 #include "gtest/gtest.h"
 #include "StateManagementTest.hpp"
 
-TEST_F(StateManagementTest, TestOfEnablingNotifierInOut)
+TEST_F(StateManagementTest, PosTestOfEnablingNotifierInOut)
 {
+    //positive test
+
     /* arrange */
     const bool enableNotifier = true;
 
@@ -13,8 +15,10 @@ TEST_F(StateManagementTest, TestOfEnablingNotifierInOut)
     EXPECT_TRUE(mySM.myTriggerInOut.IsNotifier());
 }
 
-TEST_F(StateManagementTest, TestOfDisablingNotifierInOut)
+TEST_F(StateManagementTest, NegTestOfDisablingNotifierInOut)
 {
+    //negative test
+
     /* arrange */
     const bool notifierEnabled = true;
     const bool enableNotifier = false;
@@ -27,8 +31,10 @@ TEST_F(StateManagementTest, TestOfDisablingNotifierInOut)
     EXPECT_FALSE(mySM.myTriggerInOut.IsNotifier());
 }
 
-TEST_F(StateManagementTest, TestOfEnablingTriggerInOut)
+TEST_F(StateManagementTest, PosTestOfEnablingTriggerInOut)
 {
+    //positive test
+
     /* arrange */
     const bool enableTrigger = true;
 
@@ -39,8 +45,10 @@ TEST_F(StateManagementTest, TestOfEnablingTriggerInOut)
     EXPECT_TRUE(mySM.myTriggerInOut.IsTrigger());
 }
 
-TEST_F(StateManagementTest, TestOfDisablingTriggerInOut)
+TEST_F(StateManagementTest, NegTestOfDisablingTriggerInOut)
 {
+    //negative test
+
     /* arrange */
     const bool triggerEnabled = true;
     const bool enableTrigger = false;

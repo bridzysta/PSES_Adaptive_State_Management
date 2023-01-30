@@ -1,9 +1,9 @@
-#ifndef AUTOSAR_STATE_MANAGEMENT_EXECUTION_CLIENT_HPP
-#define AUTOSAR_STATE_MANAGEMENT_EXECUTION_CLIENT_HPP
+#ifndef EXECUTION_CLIENT_HPP
+#define EXECUTION_CLIENT_HPP
 
-namespace ara::exec{
+namespace ara::exec {
 
-    class ExecutionClient{
+    class ExecutionClient {
     public:
         ExecutionClient();
         void ReportApplicationState();

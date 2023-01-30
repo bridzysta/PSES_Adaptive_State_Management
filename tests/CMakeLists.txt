@@ -13,7 +13,7 @@ add_executable(StateManagementUT
     TestOfTriggerIn.cpp
     TestOfUpdateRequest.cpp
     TestOfPowerMode.cpp
-    CommunicationGroupServerTest.h
+    CommunicationGroupServerTest.hpp
     TestOfCommunicationGroupServer.cpp
 )
 

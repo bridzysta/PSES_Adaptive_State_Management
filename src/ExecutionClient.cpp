@@ -1,12 +1,12 @@
 #include "ExecutionClient.hpp"
 
-namespace ara::exec{
+namespace ara::exec {
 
-    ExecutionClient::ExecutionClient(){
+    ExecutionClient::ExecutionClient() {
         // Not done, because of Jakub Dzialowy resignation
     }
 
-    void ExecutionClient::ReportApplicationState(){
+    void ExecutionClient::ReportApplicationState() {
         // Not done, because of Jakub Dzialowy resignation
     }
 

@@ -1,8 +1,10 @@
 #include "gtest/gtest.h"
 #include "StateManagementTest.hpp"
 
-TEST_F(StateManagementTest, TestOfEnablingTrigger)
+TEST_F(StateManagementTest, PosTestOfEnablingTrigger)
 {
+    //positive test
+
     /* arrange */
     const bool enableTrigger = true;
 
@@ -13,8 +15,10 @@ TEST_F(StateManagementTest, TestOfEnablingTrigger)
     EXPECT_TRUE(mySM.myTriggerIn.IsTrigger());
 }
 
-TEST_F(StateManagementTest, TestOfDisablingTrigger)
+TEST_F(StateManagementTest, NegTestOfDisablingTrigger)
 {
+    //negative test
+
     /* arrange */
     const bool triggerEnabled = true;
     const bool enableTrigger = false;

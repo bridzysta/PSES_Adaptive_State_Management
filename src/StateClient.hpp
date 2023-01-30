@@ -1,9 +1,9 @@
-#ifndef AUTOSAR_STATE_MANAGEMENT_STATE_CLIENT_HPP
-#define AUTOSAR_STATE_MANAGEMENT_STATE_CLIENT_HPP
+#ifndef STATE_CLIENT_HPP
+#define STATE_CLIENT_HPP
 
-namespace ara::exec{
+namespace ara::exec {
 
-        class StateClient{
+        class StateClient {
         public:
             StateClient();
         private:

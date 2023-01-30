@@ -1,20 +1,20 @@
 #include "StateClient.hpp"
 
-namespace ara::exec{
+namespace ara::exec {
 
-    StateClient::StateClient(){
+    StateClient::StateClient() {
         // Not done, because of Jakub Dzialowy resignation
     }
 
-    void StateClient::GetExecutionError(){
+    void StateClient::GetExecutionError() {
         // Not done, because of Jakub Dzialowy resignation
     }
 
-    void StateClient::GetInitialMachineStateTransitionResult(){
+    void StateClient::GetInitialMachineStateTransitionResult() {
         // Not done, because of Jakub Dzialowy resignation
     }
 
-    void StateClient::undefinedStateCallback(){
+    void StateClient::undefinedStateCallback() {
         // Not done, because of Jakub Dzialowy resignation
     }
 

@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
 #include "StateManagementTest.hpp"
-#include "StateManagementTypes.hpp"
 
 TEST_F(StateManagementTest, PosTestOfStartUpdateSession)
 {
@@ -17,7 +16,7 @@ TEST_F(StateManagementTest, PosTestOfStopUpdateSession)
 {
     //positive test
 
-    /* arrange */ 
+    /* arrange */
     const bool updateSessionRunning = true;
     bool result = false;
 
@@ -34,7 +33,7 @@ TEST_F(StateManagementTest, NegTestOfStopUpdateSession)
 {
     //negative test
 
-    /* arrange */ 
+    /* arrange */
     const bool updateSessionNotRunning = false;
     bool result = false;
 

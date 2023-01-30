@@ -4,10 +4,10 @@
 #include "StateManagementTypes.hpp"
 #include "EcuResetRequest.hpp"
 #include "RecoveryAction.hpp"
-#include "TriggerInOut.h"
-#include "TriggerOut.h"
-#include "TriggerIn.h"
-#include "UpdateRequest.h"
+#include "TriggerIn.hpp"
+#include "TriggerInOut.hpp"
+#include "TriggerOut.hpp"
+#include "UpdateRequest.hpp"
 
 namespace ara::sm {
 

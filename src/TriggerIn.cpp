@@ -1,33 +1,24 @@
-/** =========================================================================*\
-  @file TriggerIn.cpp
-  @date 28.01.2023
-  @authors Przemyslaw Kurzak
-
-  @brief TriggerIn class definition
-  
-  SWS Reqs: [SWS_SM_91007]
-
-  @copyright AGH University of Science and Technology  
-\*===========================================================================*/
-
-#include "TriggerIn.h"
-
 /**
- * @brief IsTrigger function
- * 
- * More details
-*/
-bool ara::com::TriggerIn::IsTrigger(void) const 
-{
-    return trigger;
-}
+ * @file TriggerIn.cpp
+ * @date 28.01.2023
+ * @authors Przemyslaw Kurzak
+ *
+ * @brief TriggerIn class definition
+ * @details SWS Reqs: [SWS_SM_91007]
+ *
+ * @copyright AGH University of Science and Technology
+ */
 
-/**
- * @brief SetTrigger function
- * 
- * More details
-*/
-void ara::com::TriggerIn::SetTrigger(bool setTrigger) 
-{
-    trigger = setTrigger;
+#include "TriggerIn.hpp"
+
+namespace ara::com {
+
+    bool TriggerIn::IsTrigger(void) const {
+        return trigger;
+    }
+
+    void TriggerIn::SetTrigger(bool setTrigger) {
+        trigger = setTrigger;
+    }
+
 }

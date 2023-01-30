@@ -5,15 +5,14 @@ set(Sources
     EcuResetRequest.hpp
     RecoveryAction.hpp
     CommunicationGroupServer.cpp
-    CommunicationGroupServer.h
+    CommunicationGroupServer.hpp
     TriggerIn.cpp
-    TriggerIn.h
+    TriggerIn.hpp
     TriggerOut.cpp
-    TriggerOut.h
-    TriggerInOut.cpp
-    TriggerInOut.h
+    TriggerOut.hpp
+    TriggerInOut.hpp
     UpdateRequest.cpp
-    UpdateRequest.h
+    UpdateRequest.hpp
     ExecutionClient.cpp
     ExecutionClient.hpp
     StateClient.cpp
