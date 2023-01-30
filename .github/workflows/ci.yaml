@@ -92,7 +92,7 @@ jobs:
         path: .github/cppcheck_report.txt
 
   Create_GH_Page:
-    needs: CI
+    needs: [CI, CppCheck]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
